@@ -4,6 +4,7 @@ module.exports = {
 		require('babel-preset-react')
 	],
 	plugins: [
+		require('babel-plugin-transform-inline-environment-variables'),
 		// Yep, '.default' is a workaround. Took me a while to figure it out.
 		// In any case, this entire plugin is kind of temporary until
 		// babel makes their official decorators plugin work.
