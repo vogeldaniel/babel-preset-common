@@ -1,9 +1,11 @@
 module.exports = {
 	presets: [
 		require('babel-preset-es2015'),
-		require('babel-preset-react')
+		require('babel-preset-react'),
+		require('babel-preset-stage-3') // async/await + exponential operator
 	],
 	plugins: [
+		require('babel-plugin-transform-runtime'), // async/await runtime methods
 		require('babel-plugin-transform-inline-environment-variables'),
 		// Yep, '.default' is a workaround. Took me a while to figure it out.
 		// In any case, this entire plugin is kind of temporary until
