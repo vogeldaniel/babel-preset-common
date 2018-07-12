@@ -6,6 +6,8 @@
  4) See how different options affect the output.
  */
 
+ console.log(3)
+
 module.exports = function () {
 	return {
 		presets: [
@@ -18,7 +20,20 @@ module.exports = function () {
 			^ This behavior is ok for now, it's pretty similar to what we
 			had before (only es-2015).
 			*/
-			require('@babel/preset-env'),
+			[require('@babel/preset-env'), {
+				// "targets": {
+				// 	"chrome": 52
+				// },
+				// debug: true,
+				exclude: [
+					'transform-dotall-regex',
+					'transform-spread',
+					'transform-new-target',
+					'transform-exponentiation-operator',
+					'proposal-async-generator-functions',
+					'proposal-unicode-property-regex'
+				]
+			}],
 			require('@babel/preset-react'),
 			require('@babel/preset-typescript')
 		],
