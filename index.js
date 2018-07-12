@@ -5,9 +5,6 @@
  3) run ./node_modules/.bin/babel ./test.js
  4) See how different options affect the output.
  */
-
- console.log(3)
-
 module.exports = function () {
 	return {
 		presets: [
