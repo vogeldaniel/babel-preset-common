@@ -29,7 +29,11 @@ module.exports = function () {
 			// NOTE: This requires that the generated code can find the `@babel/runtime` module
 			// since it will require() it. We include it in this package, so it should just
 			// work when doing a regular npm install due to flattening.
-			require('@babel/plugin-transform-runtime'),
+			// NOTE 2: We added a check for AF_NO_BABEL_RUNTIME so
+			// we can turn this plugin off when using webpack, since it inserts 'import'
+			// statements even in files that don't use es6 imports (and do module.exports = ...)
+			// which webpack doesn't like.
+			(!process.env.AF_NO_BABEL_RUNTIME) && require('@babel/plugin-transform-runtime'),
 			// So we can use process.env.NODE_ENV for dead-code elimination.
 			require('babel-plugin-transform-inline-environment-variables'),
 			///////
@@ -39,7 +43,7 @@ module.exports = function () {
 			// So we can do Class x { a = 1 } 
 			require('@babel/plugin-proposal-class-properties')
 			//////
-    	]
+    	].filter(x => !!x)
 	}	
 }
 
