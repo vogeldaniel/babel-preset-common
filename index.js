@@ -33,6 +33,9 @@ module.exports = function () {
 			// we can turn this plugin off when using webpack, since it inserts 'import'
 			// statements even in files that don't use es6 imports (and do module.exports = ...)
 			// which webpack doesn't like.
+			//
+			// NOTE: We don't really need this anymore because we can pass
+			// sourceType: 'unambiguous' in the babel options instead.
 			(!process.env.AF_NO_BABEL_RUNTIME) && require('@babel/plugin-transform-runtime'),
 			// So we can use process.env.NODE_ENV for dead-code elimination.
 			require('babel-plugin-transform-inline-environment-variables'),
