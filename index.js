@@ -44,7 +44,9 @@ module.exports = function () {
 			// as per https://github.com/babel/babel/issues/4117 (was https://phabricator.babeljs.io/T7140).
 			[require('@babel/plugin-proposal-decorators'), { "legacy": true }],
 			// So we can do Class x { a = 1 } 
-			require('@babel/plugin-proposal-class-properties')
+			require('@babel/plugin-proposal-class-properties'),
+			require('@babel/plugin-proposal-optional-chaining'),
+			require('@babel/plugin-proposal-nullish-coalescing-operator')
 			//////
     	].filter(x => !!x)
 	}	
